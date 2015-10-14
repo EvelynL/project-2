@@ -1,0 +1,26 @@
+//Project 2 
+//Evelyn Levine
+
+////Project name
+
+//// GLOBALS:  coordinates, speed, etc.
+
+//// SETUP:  window size, initialization (start in middle of screen).
+void setup() {
+  size( 840,680);
+
+
+}
+
+//// NEXT FRAME:  scene, action, show.
+void draw() {
+
+}
+
+
+////Exiting the program
+void keyPressed() {
+  if (key == 'q') {
+    exit();                           // press 'q' key to QUIT.
+  }
+}
