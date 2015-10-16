@@ -4,13 +4,54 @@
 ////Project name
 
 //// GLOBALS:  coordinates, speed, etc.
+String title=  "Pool";
+String news=   "Use 'r' key to reset.";
+String author=  "Evelyn Levine";
+
+int balldiam = 30;
+float friction = 1.007;
+
+float left, right, top, bottom;
+float middle;
+
+float cueX,  cueY,  cueDX,  cueDY;
+float redX,  redY,  redDX,  redDY;
+float yelX,  yelY,  yelDX,  yelDY;
+float bluX, bluY, bluDX, bluDY;
+
+float modX,modY;
+
+float pW = 1;
 
 //// SETUP:  window size, initialization (start in middle of screen).
 void setup() {
   size( 840,680);
+rectMode( CORNERS );
+  left=   50;
+  right=  width-50;
+  top=    100;
+  bottom= height-50;
+  middle= left + (right-left) / 2;
+  //
+  reset();
+ }
 
-
-}
+ void reset() {
+   cueX=  left + (right-left) / 4;
+   cueY=  top + (bottom-top) / 2;
+   // Random positions.
+   redX=  random( middle,right );   redY=  random( top, bottom );
+   yelX=  random( middle,right );   yelY=  random( top, bottom );
+   if(dist(redX,redY, yelX,yelY) <= balldiam){ reset(); }
+   bluX=  random( middle,right );   bluY=  random( top, bottom );
+   if(dist(bluX,bluY, yelX,yelY) <= balldiam){ reset(); }
+   if(dist(redX,redY, bluX,bluY) <= balldiam){ reset(); }
+   // Random speeds
+   redDX=  random( 0,5 );   redDY=  random( -5,5 );
+   yelDX=  random( 0,5 );   redDY=  random( -5,5 );
+   bluDX=  random( 0,5 );   bluDY=  random( -5,5 );
+   cueDX = 0; cueDY = 0;
+ }
 
 //// NEXT FRAME:  scene, action, show.
 void draw() {
